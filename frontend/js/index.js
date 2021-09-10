@@ -18,7 +18,7 @@ function createCardProduct(product) {
 <div class='card-body text-center px-0 pb-0'>
 <h3 class='card-title'>${product.name}</h3>
 <p class='card-text'>${product.getFormatedPrice()} €</p>
-<button class='btn card-footer'>Rencontrer ${product.name}</button>
+<div class='card-footer'>Rencontrer ${product.name}</div>
 </div></article>
 `;
     document.querySelector('main').appendChild(newCard);

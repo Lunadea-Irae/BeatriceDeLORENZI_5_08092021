@@ -1,46 +1,67 @@
 class ProductCart {
-    constructor(jsonProduct, options, count) {
+    constructor(jsonProduct, jsonLocalStorage) {
         jsonProduct && Object.assign(this, jsonProduct);
-        this.option = options;
-        this.count = count;
+        jsonLocalStorage && Object.assign(this, jsonLocalStorage);
     }
 }
+
+
 
 function appendProductCardCart(data, localId) {
     let productCardCart = document.createElement('article');
     productCardCart.setAttribute('id', localId);
-    for (let key of data) {
-        if (key.includes('image')) {
-            productCardCart.innerHTML += `<img src='${key.value}' alt='photo de l'orinours ${data.name}'>`;
-        } else if (Array.isArray(key)) {
-            let options;
-            key.forEach(option => {
-                options += `<p><strong>${option.key}</strong> : ${option.value}</p>`;
-            });
-            productCardCart.innerHTML += `<div class="options">${options}</div>`
-        } else {
-            productCardCart.innerHTML += `<p class="${key}">${key.value}</p>`;
-
-        }
-    }
+    let optionHTML = '';
+    for (const [key, value] of Object.entries(data.options)) {
+        optionHTML += `<p><span>${key} : </span>${value}</p>`;
+    };
+    productCardCart.innerHTML = `
+                                    <img src="${data.imageUrl}" alt="photo de l'orinours ${data.name}">
+                                    <div class="cart-card-body">
+                                        <h4>${data.name}</h4>
+                                        <div class="product-options">${optionHTML}</div>
+                                        <p class="product-description">${data.description}</p>
+                                        <span class="product-price">${data.quantity * data.price / 100} €</span>    
+                                    </div>
+                                    <p class="product-quantity">
+                                        <span class="material-icons" onclick="changeQuantity(-1,'${localId}')">remove_circle_outline</span>
+                                        <span>${data.quantity}</span>
+                                        <span class="material-icons" onclick="changeQuantity(1,'${localId}')">add_circle_outline</span>
+                                    </p>
+                                    <span class="delete-product" onclick="changeQuantity(0,'${localId}')"></span>
+`;
     document.getElementById('orinours').appendChild(productCardCart);
+
+
 }
+
+
 
 fetch("http://localhost:3000/api/teddies/")
     .then(dataListProducts => dataListProducts.json())
     .then(jsonListProducts => {
-
         console.log(jsonListProducts);
         //jsonListProducts is an Array of products in the DB
         for (const elem of Object.entries(localStorage)) {
-            //JSON.parse(elem[1])
-            console.log(JSON.parse(elem[1]));
-            console.log(jsonListProducts[JSON.parse(elem[1]).id]);
-            console.log(JSON.parse(elem[1]).options);
-            console.log(JSON.parse(elem[1]).count);
-            console.log(elem[0]);
-            /*            let card = new ProductCart(jsonListProducts.JSON.parse(elem[1]).id,JSON.parse(elem[1]).options,JSON.parse(elem[1]).count)
-                                    appendProductCardCart(card, elem[0]);*/
-
+            let productAdded = new ProductCart(jsonListProducts.find(element => element._id == JSON.parse(elem[1]).id), JSON.parse(elem[1]));
+            appendProductCardCart(productAdded, elem[0]);
         }
     });
+
+
+function changeQuantity(newQuantity, id) {
+    
+    let localProduct = JSON.parse(localStorage.getItem(id));
+    console.log(localProduct);
+    console.log(id);
+    if (localProduct.quantity + newQuantity == 0 || newQuantity==0) {
+        localStorage.removeItem(id);
+        document.getElementById(id).remove();
+    } else {
+        localProduct.quantity += newQuantity;
+        localStorage.setItem(id, JSON.stringify(localProduct));
+        let card = document.getElementById(id);
+        card.querySelector('.product-quantity > span:nth-child(2)').innerHTML = localProduct.quantity;
+        //card.querySelector('.product-price').innerHTML=localProduct.quantity*jsonListProducts.find(element => element._id == localProduct.id).price/100;
+
+    }
+}

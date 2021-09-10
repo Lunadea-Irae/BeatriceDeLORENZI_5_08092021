@@ -9,21 +9,21 @@ class Product {
 }
 
 class ProductLocalStorage {
-    constructor(id, options, count) {
+    constructor(id, options, quantity) {
         this.id = id;
         this.options = options;
-        this.count = count;
+        this.quantity = quantity;
     }
 }
 
 
 function createField(key, value) {
-    let newField;
+    let newField='';
     if (Array.isArray(value)) {
         let options = '';
         value.forEach(option =>
             options += `<option value="${option}">${option}</option>`);
-        newField = `<label for="${key}">${key}</label><select id="${key}"> ${options} </select>`;
+        document.getElementById('options').innerHTML+=`<span><label for="${key}">${key} : </label><select id="${key}"> ${options} </select></span>`;
     } else if (key == 'imageUrl') {
         newField = `<img src="${value}" alt="Image of this product">`;
     } else {
@@ -48,12 +48,13 @@ fetch(`http://localhost:3000/api/teddies/${productId}`)
                 let id = select.getAttribute('id');
                 selectedOptions[id] = select.value;
             }
-            let localName=product._id + Object.values(selectedOptions).join('');
+            let localName=product._id +'-'+ Object.values(selectedOptions).join('');
             if (localStorage.getItem(localName) == null) {
                 localStorage.setItem(localName, JSON.stringify(new ProductLocalStorage(product._id, selectedOptions, 1)));
             } else {
-                localStorage.setItem(localName, JSON.stringify(new ProductLocalStorage(product._id, selectedOptions, JSON.parse(localStorage.getItem(localName)).count + 1)))
+                localStorage.setItem(localName, JSON.stringify(new ProductLocalStorage(product._id, selectedOptions, JSON.parse(localStorage.getItem(localName)).quantity + 1)))
             }
+            document.getElementById('product-added-validation').style.display="flex";
         });
         location.replace(`#${product.name}`);
     });

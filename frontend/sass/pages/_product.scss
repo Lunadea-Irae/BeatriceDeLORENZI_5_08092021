@@ -1,0 +1,110 @@
+#product-page {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    form {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        & > * {
+            margin: 10px;
+        }
+        #name {
+            order: 0;
+            flex-basis: 100%;
+            text-align: center;
+        }
+        img {
+            order: 1;
+            width: 90%;
+            max-width: 500px;
+            object-fit: cover;
+            border-radius: 2vh !important;
+            aspect-ratio: 1.5;
+            box-shadow: 0px 0px 7px 1px lighten(map-get($map: $colors, $key: tertiary), 22%);
+        }
+        #options {
+            order: 3;
+            @media screen and (min-width: 720px) {
+                order: 2;
+            }
+            display: flex;
+            flex-flow: column;
+            flex: 1 1 auto;
+            max-width: 300px;
+            &::before {
+                content: "Options";
+                flex-basis: 100%;
+                display: block;
+            }
+
+            * {
+                margin: 5px;
+                width: -webkit-fill-available;
+            }
+        }
+        #_id {
+            display: none;
+        }
+        #price {
+            order: 2;
+            flex-basis: 100%;
+            text-align: center;
+            @include svg-background(
+                'transform="translate(-27.85533,-35.51832)"><path d="m 102.08576,37.917806 c -0.64314,-0.03446 -1.27243,0.43206 -1.53014,1.200615 l -1.793174,5.346964 -5.713863,-2.502219 c -0.775975,-0.339826 -1.656339,0.147813 -1.973524,1.093725 l -2.777606,8.283248 -18.377175,-8.048205 c -0.775976,-0.339826 -1.656337,0.148403 -1.973522,1.094315 l -1.69137,5.044598 -15.989721,-7.002907 c -0.775975,-0.339826 -1.656339,0.148403 -1.973524,1.094315 L 30.36662,96.980094 c -0.317182,0.945912 0.0524,1.981089 0.828374,2.320915 L 50.276,107.65749 c 0.775975,0.33982 1.656339,-0.1484 1.973524,-1.09432 l 1.691368,-5.0446 15.285889,6.69464 -3.330546,9.93269 c -0.317185,0.94591 0.0524,1.98109 0.828374,2.32092 l 19.081522,8.35648 c 0.775975,0.33982 1.65582,-0.14841 1.973006,-1.09432 l 5.541779,-16.52634 1.874822,0.82089 -1.329118,3.96268 c -0.317183,0.94591 0.0524,1.98109 0.828373,2.32091 L 113.776,126.6636 c 0.77597,0.33983 1.65634,-0.1484 1.97352,-1.09431 l 3.45147,-10.29294 11.20603,4.90759 c 0.77598,0.33982 1.65634,-0.14781 1.97353,-1.09373 l 17.92552,-53.457835 c 0.31718,-0.945912 -0.0524,-1.98109 -0.82837,-2.320916 l -19.08153,-8.356478 c -0.77597,-0.339826 -1.65582,0.147813 -1.973,1.093725 l -2.3735,7.079088 -7.36699,-3.226252 3.75584,-11.200042 c 0.31718,-0.945912 -0.0524,-1.981089 -0.82837,-2.320915 l -19.08152,-8.356478 c -0.1455,-0.06372 -0.29446,-0.09835 -0.44287,-0.106301 z"/></g>',
+                "pink"
+            );
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            padding: 10px;
+            @media screen and (min-width: 720px) {
+                order: 3;
+            }
+            &::after {
+                content: "€";
+            }
+        }
+        #description {
+            order: 4;
+            background-color: map-get($map: $colors, $key: primary);
+            border: map-get($colors, tertiary) 3px dashed;
+            padding: 40px;
+            max-width: 800px;
+            &::before {
+                content: "Description";
+                flex-basis: 100%;
+                display: block;
+            }
+        }
+    }
+
+    #add-product-to-cart {
+        min-width: 300px;
+        margin: 30px 50%;
+        &:active + #product-added-validation {
+            opacity: 0.5;
+        }
+    }
+    #product-added-validation {
+        max-width: 500px;
+        opacity: 1;
+        transition: opacity 250ms;
+        border: yellowgreen 15px solid;
+        border-radius: 0 5vh;
+        text-align: center;
+        display: none;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        & > * {
+            margin: 16px;
+        }
+        h3 {
+            flex-basis: 100%;
+        }
+        .btn {
+            width: 160px;
+        }
+    }
+}

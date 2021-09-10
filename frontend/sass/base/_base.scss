@@ -1,4 +1,15 @@
-:root{
+:root {
     margin: 0;
     padding: 0;
+}
+
+body {
+    &>*{
+        flex-basis: 100%;
+    }
+    @include device(3){
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
 }

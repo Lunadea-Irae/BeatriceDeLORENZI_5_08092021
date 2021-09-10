@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
         content="Chez Orinoco nous faisons main des ours en peluche de première qualité n'attendant qu'à être adoptés.">
-    
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -52,8 +52,11 @@
             </div>
         </nav>
     </header>
-    <main>
-        <form><select id="test-id"><option>test</option></select>
+    <main id="product-page">
+        <form>
+            <div id="options"><span><select id="test-id">
+                        <option>test</option>
+                    </select></span></div>
         </form>
         <button type="button" class="btn" id="add-product-to-cart">Je veux l'adopter !</button>
         <div id="product-added-validation">
@@ -93,4 +96,5 @@
     </footer>
 </body>
 <script type="text/javascript" src="../js/product.js"></script>
+
 </html>

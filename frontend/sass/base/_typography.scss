@@ -1,6 +1,7 @@
 h1,
 h2,
-h3 {
+h3,
+#name,#description::before,#options::before,#price {
     font-family: nth($fonts, 1);
 }
 h2 {
@@ -10,11 +11,20 @@ h2 {
 h3 {
     font-size: 2em;
 }
-a{
+a {
     text-decoration: none;
     color: inherit;
 }
-.material-icons{
+.material-icons {
     vertical-align: sub;
     font-size: 1.5em;
+}
+
+#name,#price {
+    font-size: 50px;
+    font-weight: bold;
+}
+
+#description::before,#options::before{
+    font-size: 30px;
 }
