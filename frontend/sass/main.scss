@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap');
+@import "./utils/variables";
+@import "./utils/functions";
+@import "./utils/mixins";
+@import "./base/base";
+@import "./base/typography";
+@import "./components/buttons";
+@import "./layouts/header";
+@import "./layouts/figure";
+@import "./layouts/footer";
+@import "./pages/index";
+@import "./pages/product";
+@import "./pages/shopping_cart";
+@import "./pages/thanks";

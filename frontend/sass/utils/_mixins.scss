@@ -1,0 +1,5 @@
+@mixin device($min) {
+    @media screen and (min-width: nth( $devices, $min)) {
+        @content;
+    }
+}

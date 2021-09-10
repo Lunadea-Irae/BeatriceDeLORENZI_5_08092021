@@ -1,0 +1,8 @@
+header {
+    background-color: map-get($map: $colors, $key: primary);
+    font-family: nth($fonts,1);
+    font-size: x-large;
+    .navbar-brand {
+        width: 200px !important;
+    }
+}
