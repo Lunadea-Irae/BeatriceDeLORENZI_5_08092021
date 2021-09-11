@@ -1,0 +1,21 @@
+//same code than in shopping-cart and :
+#ordered {
+    padding-top: 20px;
+    .product-quantity {
+        padding: 20px;
+        &::before {
+            content: "Quantité";
+        }
+    }
+    .less,
+    .more,
+    .delete-product {
+        display: none;
+    }
+    div:last-child {
+        text-align: center;
+    }
+    @include device(1){
+        padding-inline: 20px;
+      }
+}

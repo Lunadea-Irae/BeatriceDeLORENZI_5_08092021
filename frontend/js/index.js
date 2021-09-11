@@ -18,7 +18,7 @@ function createCardProduct(product) {
 <div class='card-body text-center px-0 pb-0'>
 <h3 class='card-title'>${product.name}</h3>
 <p class='card-text'>${product.getFormatedPrice()} €</p>
-<div class='card-footer'>Rencontrer ${product.name}</div>
+<div class='card-footer'>En savoir plus</div>
 </div></article>
 `;
     document.querySelector('main').appendChild(newCard);
@@ -27,7 +27,6 @@ function createCardProduct(product) {
 fetch("http://localhost:3000/api/teddies/")
     .then(dataListProducts => dataListProducts.json())
     .then(jsonListProducts => {
-        localStorage.clear();
         for (let jsonProduct of jsonListProducts) {
             let product = new Product(jsonProduct);
             createCardProduct(product);

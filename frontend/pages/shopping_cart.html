@@ -33,7 +33,7 @@
                             <a class="nav-link active" aria-current="page" href="../index.html">Accueil</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../index.html#our-orinours">Nos oursons</a>
+                            <a class="nav-link" href="../index.html#product-list">Nos oursons</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="../index.html#quality-guarantee">Gage de qualité</a>
@@ -52,56 +52,52 @@
     </header>
     <main id="shopping-cart">
         <section>
-            <h2>Votre panier</h2>
+            <h1>Votre panier</h1>
             <p>Veuillez noter que vos articles ne sont pas encore commandés. Pour cela, merci de cliquer sur le bouton
                 de commande après avoir rempli vos coordonnées.</p>
         </section>
         <section id="cart-table">
-            <h3>Vos Orinours</h3>
-            <div id="orinours"></div>
+            <h2>Vos Orinours</h2>
+            <div id="product-table"></div>
             <div id="total"></div>
         </section>
         <section>
             <form>
                 <div>
-                    <h3>Vos informations</h3>
+                    <h2>Vos informations</h2>
                     <div>
-                        <label for="lastname">Nom : </label>
-                        <input type="text" name="lastname" id="lastname" pattern="[A-ZÀ-ž\\s&#45]{3,}"
+                        <label for="lastName">Nom : </label>
+                        <input type="text" name="lastName" id="lastName" pattern="[A-Za-zÀ-ž\s-]{3,}"
+                        
                             placeholder="Votre nom" required>
-                        <span class="validity default-visibility"></span>
                     </div>
                     <div>
-                        <label for="firstname">Prénom : </label>
-                        <input type="text" name="firstname" id="firstname" pattern="[A-Za-zÀ-ž\\s&#45]{3,}"
+                        <label for="firstName">Prénom : </label>
+                        <input type="text" name="firstName" id="firstName" pattern="[A-Za-zÀ-ž\s-]{3,}"
                             placeholder="Votre prénom" required>
-                        <span class="validity default-visibility"></span>
                     </div>
                     <div>
-                        <label for="adress">Adresse : </label>
-                        <input type="text" name="adress" id="adress" pattern="[A-Za-zÀ-ž0-9\\s&#45]*"
+                        <label for="address">Adresse : </label>
+                        <input type="text" name="address" id="address" pattern="[A-Za-zÀ-ž0-9\s-]*"
                             placeholder="Votre adresse" required>
-                        <span class="validity default-visibility"></span>
                     </div>
                     <div>
                         <label for="postalCode">Code postal : </label>
                         <input type="text" name="postalCode" id="postalCode" pattern="[0-9]{5}"
                             placeholder="Votre code postal" required>
-                        <span class="validity default-visibility"></span>
                     </div>
                     <div>
                         <label for="city">Ville : </label>
-                        <input type="text" name="city" id="city" pattern="[A-Za-zÀ-ž\\s&#45]{2,100}"
+                        <input type="text" name="city" id="city" pattern="[A-Za-zÀ-ž\s-]{2,100}"
                             placeholder="Votre ville" required>
-                        <span class="validity default-visibility"></span>
                     </div>
                     <div>
                         <label for="email">Email : </label>
-                        <input type="email" name="email" id="email" pattern=".+@.+\\..+" placeholder="Votre email"
+                        <input type="email" name="email" id="email" pattern=".+@.+\..+" placeholder="Votre email"
                             required>
                         <span class="validity default-visibility"></span>
                     </div>
-                    <button type="button" class="btn" id="send-order">Commander</button>
+                    <button type="submit" class="btn" id="send-order">Commander</button>
                 </div>
             </form>
         </section>
@@ -137,4 +133,5 @@
     </footer>
 </body>
 <script type="text/javascript" src="../js/shopping_cart.js"></script>
+
 </html>

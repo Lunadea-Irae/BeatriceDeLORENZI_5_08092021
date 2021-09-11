@@ -1,8 +1,8 @@
-#shopping-cart {
+#shopping-cart, #ordered{
     justify-content: center;
     margin: 0;
     max-width: 900px;
-    #orinours {
+    #product-table {
         article {
             display: flex;
             background: white;
@@ -46,9 +46,16 @@
                 font-size: large;
                 text-align: center;
                 align-self: center;
+                margin-bottom: 0;
+                display: flex;
+                flex-flow: column;
+                .less {
+                    order: 2;
+                }
+                .more {order: -1;}
             }
             .delete-product {
-                font-size: x-large;
+                font-size: xx-large;
                 margin-left: 5px;
                 padding-left: 5px;
                 text-align: center;
@@ -68,7 +75,7 @@
         }
     }
 
-    section {
+    section:not(:nth-child(3)) {
         margin: 5px;
         flex: auto;
         padding: 15px;
@@ -81,14 +88,17 @@
     form {
         max-width: 450px;
         margin: 0 auto;
-        padding: 0 20px;
         text-align: center;
+        @include device(1){
+          padding: 0 20px;
+        }
         & > div div {
             display: flex;
             justify-content: flex-start;
             align-items: center;
             flex-wrap: nowrap;
             margin-bottom: 5px;
+            text-align: left;
         }
         label {
             padding-right: 10px;
@@ -107,7 +117,12 @@
 
             &.default-visibility {
                 visibility: hidden;
+                display: none;
             }
+        }
+
+        &:focus:invalid {
+            background-color: indianred;
         }
         &:valid + span:after {
             color: green;
@@ -119,13 +134,6 @@
             color: red;
             content: "âœ–";
             padding-left: 5px;
-        }
-        &:disabled.product-number {
-            background: inherit;
-            color: inherit;
-            border: inherit;
-            max-width: 30px;
-            text-align: center;
         }
     }
     .btn {

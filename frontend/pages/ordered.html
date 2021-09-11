@@ -37,7 +37,7 @@
                             <a class="nav-link active" aria-current="page" href="../index.html">Accueil</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../index.html#our-orinours">Nos oursons</a>
+                            <a class="nav-link" href="../index.html#product-list">Nos oursons</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="../index.html#quality-guarantee">Gage de qualité</a>
@@ -54,24 +54,19 @@
             </div>
         </nav>
     </header>
-    <main>
+    <main id="ordered">
         <div>
             <h1>Adoption confirmée !</h1>
             <p>Félicitation ! Vos nouveaux Orinours seront très heureux d'arriver chez vous très bientot.</p>
             <h2>Adoption numéro :</h2>
-            <p><strong>${dataSent.orderId}</strong></p>
-            <p id="div-total">Total : ${total/100} €</p>
+            <p><strong id="order-id"></strong></p>
+            <div id="product-table"></div>
+            <div id="total"></div>
         </div>
         <div>
-            <h2>Envoyés à : </h2>
-            <div id="clientId">
-                <p>${dataSent.contact.firstName} <strong>${dataSent.contact.lastName}</strong></p>
-                <p>${dataSent.contact.address}</p>
-                <p>${dataSent.contact.postalCode} ${dataSent.contact.city}</p>
-                <p>${dataSent.contact.email}</p>
-            </div>
+            <p>Merci pour votre commande et à très bientot sur Orinoco !</p>
+            <a href="../index.html" class="btn">Retourner à la page d'accueil</a>
         </div>
-        <p>Merci pour votre commande et à très bientot sur Orinoco !</p>
     </main>
     <footer>
         <ul>
@@ -103,5 +98,6 @@
             </span></a>
     </footer>
 </body>
+<script type="text/javascript" src="../js/ordered.js"></script>
 
 </html>

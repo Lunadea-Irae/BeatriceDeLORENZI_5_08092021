@@ -20,7 +20,8 @@
 }
 #contact {
     order: 4;
-    margin: 20px;
+    margin: 20px auto;
+    max-width: 600px;
 
     form {
         display: flex;
@@ -64,7 +65,7 @@
     border: map-get($colors, tertiary) 3px dashed;
     border-width: medium 0;
     padding: 35px 10%;
-    @media screen and (min-width: 1000px) {
+    @include device(3) {
         border-width: medium;
         border-radius: 2vh;
         margin: 0 10px 40px;

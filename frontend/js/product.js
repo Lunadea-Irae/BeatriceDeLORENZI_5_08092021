@@ -26,7 +26,10 @@ function createField(key, value) {
         document.getElementById('options').innerHTML+=`<span><label for="${key}">${key} : </label><select id="${key}"> ${options} </select></span>`;
     } else if (key == 'imageUrl') {
         newField = `<img src="${value}" alt="Image of this product">`;
-    } else {
+    } else if(key=='name'){
+        newField = `<h1 id="${key}">${value}</h1>`;
+    }
+    else {
         newField = `<p id="${key}">${value}</p>`;
     }
     document.querySelector('form').innerHTML += newField;
