@@ -24,7 +24,7 @@ function createCardProduct(product) {
     document.querySelector('main').appendChild(newCard);
 }
 
-fetch("http://localhost:3000/api/teddies/")
+fetch("http://localhost:3000/api/"+category[0]+"/")
     .then(dataListProducts => dataListProducts.json())
     .then(jsonListProducts => {
         for (let jsonProduct of jsonListProducts) {

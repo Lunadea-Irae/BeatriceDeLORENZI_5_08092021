@@ -1,7 +1,5 @@
 
-let teddies = ['teddies','orinours'];
+let teddies = ['teddies','Orinours'];
 let cameras = ['cameras','Orinocam'];
+let furniture=['furniture'];
 window.category = teddies;
-
-//document.body.innerHTML=document.body.innerHTML.replace(/Orinours/g,'Oricam');
-

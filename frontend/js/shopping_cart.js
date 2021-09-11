@@ -70,7 +70,7 @@ function sendOrder() {
     }
 
     let data = { contact: contact, products: boughtProducts };
-    fetch("http://localhost:3000/api/teddies/order", {
+    fetch("http://localhost:3000/api/"+category[0]+"/order", {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -102,7 +102,7 @@ function sendOrder() {
 // add event order button
 
 checkEmptyCart();
-fetch("http://localhost:3000/api/teddies/")
+fetch("http://localhost:3000/api/"+category[0]+"/")
     .then(dataListProducts => dataListProducts.json())
     .then(jsonListProducts => {
         serverData = jsonListProducts;
