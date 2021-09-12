@@ -37,7 +37,7 @@ function createField(key, value) {
 
 
 
-fetch(`http://localhost:3000/api/${category[0]}/${productId}`)
+fetch(`http://localhost:3000/api/${this.category[0]}/${productId}`)
     .then(dataProduct => dataProduct.json())
     .then(jsonProduct => {
         let product = new Product(jsonProduct);

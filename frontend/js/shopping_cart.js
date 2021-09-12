@@ -54,7 +54,6 @@ function totalPriceCalculate() {
 }
 
 function sendOrder() {
-
     let contact = {};
     document.querySelectorAll('input').forEach(input => {
         Object.defineProperty(contact, input.id, {
@@ -70,7 +69,7 @@ function sendOrder() {
     }
 
     let data = { contact: contact, products: boughtProducts };
-    fetch("http://localhost:3000/api/"+category[0]+"/order", {
+    fetch(`http://localhost:3000/api/${this.category[0]}/order`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -84,7 +83,7 @@ function sendOrder() {
         })
         //then get the array of the products
         .then(function (dataSent) {
-            location.href = "./ordered.html#" + dataSent.orderId;
+            document.location.href="./ordered.html#" + dataSent.orderId+"&"+total.innerHTML;
         })
         .catch(function (err) {
             console.error(err);
@@ -102,7 +101,7 @@ function sendOrder() {
 // add event order button
 
 checkEmptyCart();
-fetch("http://localhost:3000/api/"+category[0]+"/")
+fetch(`http://localhost:3000/api/${this.category[0]}/`)
     .then(dataListProducts => dataListProducts.json())
     .then(jsonListProducts => {
         serverData = jsonListProducts;
