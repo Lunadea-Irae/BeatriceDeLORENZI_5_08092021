@@ -1,6 +1,6 @@
 let serverData;
 
-
+//check if cart is empty
 function checkEmptyCart() {
     if (localStorage.length === 0 || localStorage.getItem('cart') === '[]') {
 
@@ -11,6 +11,7 @@ function checkEmptyCart() {
     };
 }
 
+//foreach product in the localStorage, build a card
 function appendProductCardCart(database, options, quantity) {
     let productCardCart = document.createElement('article');
     let domSelector = database._id;
@@ -39,6 +40,7 @@ function appendProductCardCart(database, options, quantity) {
 
     document.querySelector('#product-table').appendChild(productCardCart);
 
+    //add a listener to add or remove this product
     productCardCart.querySelectorAll('.change-quantity')
         .forEach(element => {
             element.addEventListener('click', function (event) {
@@ -67,6 +69,7 @@ function totalPriceCalculate() {
     document.querySelector('#total').innerHTML = "Total : " + total / 100 + " €"
 }
 
+//sendOrder with formated data
 function sendOrder() {
     let contact = {};
     document.querySelectorAll('input').forEach(input => {
@@ -84,26 +87,26 @@ function sendOrder() {
 
 
 
-let data = { contact: contact, products: boughtProducts };
-fetch(`http://localhost:3000/api/${category[0]}/order`, {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(data)
-})
-    .then(function (dataSent) {
-        if (dataSent.ok) {
-            return dataSent.json();
-        }
+    let data = { contact: contact, products: boughtProducts };
+    fetch(`http://localhost:3000/api/${category[0]}/order`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
     })
-    //then get the array of the products
-    .then(function (dataSent) {
-        document.location.href = "./ordered.html#" + dataSent.orderId + "&" + total.innerHTML;
-    })
-    .catch(function (err) {
-        console.error(err);
-    })
+        .then(function (dataSent) {
+            if (dataSent.ok) {
+                return dataSent.json();
+            }
+        })
+        //then change url with orderId and total price
+        .then(function (dataSent) {
+            document.location.href = "./ordered.html#" + dataSent.orderId + "&" + total.innerHTML;
+        })
+        .catch(function (err) {
+            console.error(err);
+        })
 }
 
 
@@ -115,7 +118,6 @@ fetch(`http://localhost:3000/api/${category[0]}/order`, {
 // add cards
 // calculate total price
 // add event order button
-
 checkEmptyCart();
 fetch(`http://localhost:3000/api/${category[0]}/`)
     .then(dataListProducts => dataListProducts.json())
@@ -127,12 +129,13 @@ fetch(`http://localhost:3000/api/${category[0]}/`)
                 appendProductCardCart(serverData.find(element => element._id == elem.id), elem.options, elem.quantity);
             });
             totalPriceCalculate();
-            if(document.querySelector('main').getAttribute('id')=='shopping-cart'){
-            document.getElementsByTagName('form')[0].addEventListener('submit', function (event) {
-                event.preventDefault();
-                sendOrder();
-            })}
-                ;
+            if (document.querySelector('main').getAttribute('id') == 'shopping-cart') {
+                document.getElementsByTagName('form')[0].addEventListener('submit', function (event) {
+                    event.preventDefault();
+                    sendOrder();
+                })
+            }
+            ;
         }
     });
 
@@ -153,7 +156,6 @@ function changeQuantity(newQuantity, id, options, domSelector) {
         localStorage.setItem('cart', JSON.stringify(cart));
         document.getElementById(domSelector).remove();
     } else {
-        // cart[cartIndex].quantity += newQuantity;
         cart[cartIndex].quantity += newQuantity;
         localStorage.setItem('cart', JSON.stringify(cart));
         let card = document.getElementById(domSelector);

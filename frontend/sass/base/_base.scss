@@ -4,10 +4,10 @@
 }
 
 body {
-    &>*{
+    & > * {
         flex-basis: 100%;
     }
-    @include device(3){
+    @include device(3) {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-around;

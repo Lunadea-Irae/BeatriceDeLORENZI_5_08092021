@@ -1,6 +1,7 @@
+//Set product id within URL
 let productId = location.search.replace('?', '');
 
-
+//Create each field of the product data.
 function createField(key, value) {
     let newField = '';
     if (Array.isArray(value)) {
@@ -20,7 +21,7 @@ function createField(key, value) {
 }
 
 
-
+//get the product server datas
 fetch(`http://localhost:3000/api/${category[0]}/${productId}`)
     .then(dataProduct => dataProduct.json())
     .then(jsonProduct => {
@@ -29,6 +30,8 @@ fetch(`http://localhost:3000/api/${category[0]}/${productId}`)
         for (const [key, value] of Object.entries(product)) {
             createField(key, value);
         };
+
+        //add an interaction for get in the cart.
         document.querySelector('#add-product-to-cart').addEventListener('click', function () {
             const selectedOptions = {};
             for (const select of document.querySelector('form').querySelectorAll('select')) {
@@ -50,12 +53,12 @@ fetch(`http://localhost:3000/api/${category[0]}/${productId}`)
                 }
             });
             if (isPresent != undefined) {
-                cart[isPresent].quantity+=1;
+                cart[isPresent].quantity += 1;
             } else {
                 cart.push({ 'id': productId, 'options': selectedOptions, quantity: 1 });
-                
+
             };
-            localStorage.setItem('cart',JSON.stringify(cart));
+            localStorage.setItem('cart', JSON.stringify(cart));
 
             document.querySelector('#product-added-validation').style.display = "flex";
         }

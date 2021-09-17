@@ -4,7 +4,6 @@
     }
 }
 
-
-@mixin svg-background($svg-code,$color) {
+@mixin svg-background($svg-code, $color) {
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 124.96202 90.437035"> <g fill="#{$color}" #{$svg-code}</svg>');
-  }
+}

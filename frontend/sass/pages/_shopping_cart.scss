@@ -1,4 +1,5 @@
-#shopping-cart, #ordered{
+#shopping-cart,
+#ordered {
     justify-content: center;
     margin: 0;
     max-width: 900px;
@@ -52,7 +53,9 @@
                 .less {
                     order: 2;
                 }
-                .more {order: -1;}
+                .more {
+                    order: -1;
+                }
             }
             .delete {
                 font-size: xx-large;
@@ -90,8 +93,8 @@
         margin: 0 auto;
         padding: 0 15px;
         text-align: center;
-        @include device(1){
-          padding: 0 20px;
+        @include device(1) {
+            padding: 0 20px;
         }
         & > div div {
             display: flex;
