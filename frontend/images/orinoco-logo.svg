@@ -98,7 +98,7 @@
      fit-margin-right="0"
      fit-margin-bottom="0"
      inkscape:zoom="2.3815385"
-     inkscape:cx="155.1365"
+     inkscape:cx="157.02603"
      inkscape:cy="83.001177"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
@@ -113,15 +113,15 @@
   <g
      id="g4531"
      transform="translate(6.0375799,85.948887)"
-     style="fill:url(#linearGradient4558);fill-opacity:1;stroke:black">
+     style="fill:url(#linearGradient4558);fill-opacity:1;stroke:#000000;stroke-width:2;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none;paint-order:stroke markers fill">
     <path
        sodipodi:nodetypes="ccccccccccc"
        inkscape:connector-curvature="0"
        id="path4520"
        d="m -5.9289567,-85.881727 12.5352435,-0.06716 2.449522,7.664035 77.1970582,1.039191 -8.461985,39.043897 -57.452426,1.633015 -4.750588,11.87647 -3.562942,0.74228 4.899044,-14.103309 -15.5878671,-45.130588 c -2.7420782,1.942221 -8.2110949,1.842217 -7.2650596,-2.697831 z m 27.1581477,64.678161 2.226838,2.89489 h 36.817059 l 1.418229,-2.456445 z"
-       style="fill:url(#linearGradient4560);fill-opacity:1;stroke:none;stroke-width:0.2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+       style="fill:url(#linearGradient4560);fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill" />
     <circle
-       style="opacity:1;vector-effect:none;fill:url(#linearGradient4562);fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers fill stroke"
+       style="opacity:1;vector-effect:none;fill:url(#linearGradient4562);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke markers fill"
        id="circle4524"
        cx="68.549507"
        cy="-16.56432"
@@ -131,6 +131,6 @@
        cy="-16.56432"
        cx="14.549507"
        id="circle4526"
-       style="opacity:1;vector-effect:none;fill:url(#linearGradient4564);fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers fill stroke" />
+       style="opacity:1;vector-effect:none;fill:url(#linearGradient4564);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke markers fill" />
   </g>
 </svg>

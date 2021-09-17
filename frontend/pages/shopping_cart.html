@@ -12,7 +12,7 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
         
-    <script type="text/javascript" src="../js/change_category.js"></script>
+    
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
     <title>Panier - Orinours</title>
@@ -68,38 +68,37 @@
                 <div>
                     <h2>Vos informations</h2>
                     <div>
-                        <label for="lastName">Nom : </label>
+                        <label for="lastName" class="form-label">Nom : </label>
                         <input type="text" name="lastName" id="lastName" pattern="[A-Za-zÀ-ž\s-]{3,}"
                         
                             placeholder="Votre nom" required>
                     </div>
                     <div>
-                        <label for="firstName">Prénom : </label>
+                        <label for="firstName" class="form-label">Prénom : </label>
                         <input type="text" name="firstName" id="firstName" pattern="[A-Za-zÀ-ž\s-]{3,}"
-                            placeholder="Votre prénom" required>
+                            placeholder="Votre prénom" class="form-control" required>
                     </div>
                     <div>
-                        <label for="address">Adresse : </label>
+                        <label for="address" class="form-label">Adresse : </label>
                         <input type="text" name="address" id="address" pattern="[A-Za-zÀ-ž0-9\s-]*"
-                            placeholder="Votre adresse" required>
+                            placeholder="Votre adresse" class="form-control" required>
                     </div>
                     <div>
-                        <label for="postalCode">Code postal : </label>
+                        <label for="postalCode" class="form-label">Code postal : </label>
                         <input type="text" name="postalCode" id="postalCode" pattern="[0-9]{5}"
-                            placeholder="Votre code postal" required>
+                            placeholder="Votre code postal" class="form-control" required>
                     </div>
                     <div>
-                        <label for="city">Ville : </label>
+                        <label for="city" class="form-label">Ville : </label>
                         <input type="text" name="city" id="city" pattern="[A-Za-zÀ-ž\s-]{2,100}"
-                            placeholder="Votre ville" required>
+                            placeholder="Votre ville" class="form-control" required>
                     </div>
                     <div>
-                        <label for="email">Email : </label>
-                        <input type="email" name="email" id="email" pattern=".+@.+\..+" placeholder="Votre email"
+                        <label for="email" class="form-label">Email : </label>
+                        <input type="email" name="email" id="email" pattern=".+@.+\..+" placeholder="Votre email" class="form-control"
                             required>
-                        <span class="validity default-visibility"></span>
                     </div>
-                    <button type="submit" class="btn" id="send-order">Commander</button>
+                    <button type="submit" class="btn" id="send-order" class="form-control">Commander</button>
                 </div>
             </form>
         </section>
@@ -134,6 +133,8 @@
             </span></a>
     </footer>
 </body>
+<script type="text/javascript" src="../js/change_category.js"></script>
+<script type="text/javascript" src="../js/index.js"></script>
 <script type="text/javascript" src="../js/shopping_cart.js"></script>
 
 </html>
