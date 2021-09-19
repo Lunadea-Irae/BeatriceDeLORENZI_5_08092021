@@ -12,3 +12,4 @@ Clone this repo. From within the project folder, run npm install. You can then r
 I choose to start on the teddies products, but this API is thinked to be scalable.
 You can change category in "change_category.js" file and writting "cameras" instead of "teddies".
 Informations : Only teddies and cameras are implemented, the design is set for teddies for the moment.
+I know that it should be a JSON or env file but possibilities were limitates in JS vanilla and without host. I tried to be the most faithful to the JSON format for this change_category.js file. On purpose, the function will be replaced by templating.
