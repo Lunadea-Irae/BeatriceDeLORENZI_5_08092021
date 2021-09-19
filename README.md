@@ -1,4 +1,4 @@
-# Welcome on the Orinoco Project ![GitHub Logo](/frontend/images/Orinoco-logo.svg) Format: ![Alt Text](url)
+# Welcome on the Orinoco Project ![Orinoco's Logo](./frontend/images/Orinoco-logo.svg)
 ## Backend
 ### Prerequisites
 You will need to have Node and npm installed locally on your machine.
