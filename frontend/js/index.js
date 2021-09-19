@@ -15,7 +15,7 @@ function createCardProduct(product) {
 <div class='card-body text-center px-0 pb-0'>
 <h3 class='card-title'>${product.name}</h3>
 <p class='card-text'>${product.price} €</p>
-<div class='card-footer'>details</div>
+<div class='card-footer'>Détails</div>
 </div></article>
 `;
     document.querySelector('main').appendChild(newCard);
