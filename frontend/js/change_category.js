@@ -14,7 +14,7 @@ let configData =
         'teddies': {
             'header': {
                 ".navbar-brand": {
-                    "src": "/images/Orinours-logo.svg",
+                    "src": "/images/orinours-logo.svg",
                     "alt": "Logo d'Orinours, la boutique d'ours en peluche faits main."
                 },
                 ".product-listName": 'Nos Oursons'
@@ -80,7 +80,7 @@ let configData =
             'brand': 'Orinocam',
             'header': {
                 ".navbar-brand": {
-                    "src": '/images/Orinocam-logo.svg',
+                    "src": '/images/orinocam-logo.svg',
                     "alt": "Logo d'Orinocam, votre expert en appareil photo."
                 },
                 ".product-listName": "Nos appareils"
