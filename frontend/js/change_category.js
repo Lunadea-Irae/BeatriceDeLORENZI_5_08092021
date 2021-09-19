@@ -1,7 +1,7 @@
 let configData =
 {
     //..........CHANGE CATEGORY HERE (avalable teddies and cameras for now)
-    'category': 'cameras',
+    'category': 'teddies',
     //.....................................................................
 
 
