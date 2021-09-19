@@ -1,3 +1,14 @@
 .btn {
     background-color: lighten(map-get($colors, secondary), 20%) !important;
+    &:hover {
+        transform: scale(1.1);
+    }
+}
+
+#contact form button {
+    cursor: pointer;
+}
+
+input:hover {
+    transform: scale(1.1);
 }

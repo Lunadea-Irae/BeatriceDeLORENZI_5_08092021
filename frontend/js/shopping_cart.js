@@ -5,8 +5,8 @@ function checkEmptyCart() {
     if (localStorage.length === 0 || localStorage.getItem('cart') === '[]') {
 
         document.querySelector('main').innerHTML = `<section><h1>Votre panier est vide</h1>
-                                                <p>Pour ajouter des Orinours à votre panier, allez leur rendre visite et clickez sur le bouton "Je veux l'adopter"</p>
-                                                <a class="btn" href="../index.html">Retourner à la liste</a></section>`;
+                                                <p id="empty-cart">Pour ajouter des Orinours à votre panier, allez leur rendre visite et clickez sur le bouton "Je veux l'adopter"</p>
+                                                <a class="btn" href="/index.html#product-list">Retourner à la liste</a></section>`;
         return true;
     };
 }
@@ -24,7 +24,7 @@ function appendProductCardCart(database, options, quantity) {
     productCardCart.innerHTML = `
                                     <img src="${database.imageUrl}" alt="photo de l'orinours ${database.name}">
                                     <div class="cart-card-body">
-                                        <h4>${database.name}</h4>
+                                        <h3>${database.name}</h3>
                                         <div class="product-options">${optionHTML}</div>
                                         <p class="product-description">${database.description}</p>
                                         <span class="product-price">${quantity * database.price / 100} €</span>    
@@ -88,7 +88,7 @@ function sendOrder() {
 
 
     let data = { contact: contact, products: boughtProducts };
-    fetch(`http://localhost:3000/api/${category[0]}/order`, {
+    fetch(`http://localhost:3000/api/${configData.category}/order`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -119,7 +119,7 @@ function sendOrder() {
 // calculate total price
 // add event order button
 checkEmptyCart();
-fetch(`http://localhost:3000/api/${category[0]}/`)
+fetch(`http://localhost:3000/api/${configData.category}/`)
     .then(dataListProducts => dataListProducts.json())
     .then(jsonListProducts => {
         serverData = jsonListProducts;
@@ -130,6 +130,7 @@ fetch(`http://localhost:3000/api/${category[0]}/`)
             });
             totalPriceCalculate();
             if (document.querySelector('main').getAttribute('id') == 'shopping-cart') {
+
                 document.getElementsByTagName('form')[0].addEventListener('submit', function (event) {
                     event.preventDefault();
                     sendOrder();
@@ -137,6 +138,7 @@ fetch(`http://localhost:3000/api/${category[0]}/`)
             }
             ;
         }
+        fillHtml('shopping_cartPage');
     });
 
 //on click on - or + or trash change quantity and totals

@@ -2,7 +2,7 @@
 let productId = location.search.replace('?', '');
 
 //Create each field of the product data.
-function createField(key, value) {
+function createField(key, value, productName) {
     let newField = '';
     if (Array.isArray(value)) {
         let options = '';
@@ -10,9 +10,11 @@ function createField(key, value) {
             options += `<option value="${option}">${option}</option>`);
         document.querySelector('#options').innerHTML += `<span><label class="form-label" for="${key}">${key} : </label><select class="form-control" id="${key}"> ${options} </select></span>`;
     } else if (key == 'imageUrl') {
-        newField = `<img src="${value}" alt="Image of this product">`;
+        newField = `<img src="${value}" alt="Photo de ${productName}">`;
     } else if (key == 'name') {
         newField = `<h1 id="${key}">${value}</h1>`;
+    } else if (key === 'price') {
+        newField = `<h2 id="${key}">${value}</h2>`;
     }
     else {
         newField = `<p id="${key}">${value}</p>`;
@@ -22,14 +24,15 @@ function createField(key, value) {
 
 
 //get the product server datas
-fetch(`http://localhost:3000/api/${category[0]}/${productId}`)
+fetch(`http://localhost:3000/api/${configData.category}/${productId}`)
     .then(dataProduct => dataProduct.json())
     .then(jsonProduct => {
         let product = new Product(jsonProduct);
-        document.title = product.name + " - Orinours"
+        document.title = product.name
         for (const [key, value] of Object.entries(product)) {
-            createField(key, value);
+            createField(key, value, product.name);
         };
+        fillHtml('productPage');
 
         //add an interaction for get in the cart.
         document.querySelector('#add-product-to-cart').addEventListener('click', function () {

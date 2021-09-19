@@ -9,7 +9,7 @@
     }
     .less,
     .more,
-    .delete-product {
+    .delete {
         display: none;
     }
     div:last-child {
@@ -37,6 +37,10 @@
             box-shadow: -1px 2px 14px 4px grey;
             text-decoration: none;
             color: initial;
+            cursor: pointer;
+            &:hover {
+                transform: scale(1.1);
+            }
         }
         &:active {
             text-decoration: none;

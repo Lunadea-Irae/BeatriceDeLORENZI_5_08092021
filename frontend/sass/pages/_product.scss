@@ -2,6 +2,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+
     form {
         display: flex;
         flex-wrap: wrap;
@@ -43,6 +44,12 @@
                 margin: 5px;
                 width: -webkit-fill-available;
             }
+            select {
+                cursor: pointer;
+                &:hover {
+                    transform: scale(1.1);
+                }
+            }
         }
         #_id {
             display: none;
@@ -83,6 +90,7 @@
     #add-product-to-cart {
         min-width: 300px;
         margin: 30px 50%;
+
         &:active + #product-added-validation {
             opacity: 0.5;
         }

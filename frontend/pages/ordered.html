@@ -16,7 +16,7 @@
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
             crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="/css/style.css">
         <title>Commande passée</title>
     </head>
 
@@ -24,7 +24,7 @@
     <header id="header">
         <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container-fluid">
-                <a href="../index.html"><img src="../images/orinours-logo.svg"
+                <a href="/index.html"><img src="/images/orinours-logo.svg"
                         alt="Logo d'Orinours, boutique d'ours en peluche faits main." class="navbar-brand"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -34,19 +34,19 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="../index.html">Accueil</a>
+                            <a class="nav-link active" href="/index.html">Accueil</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../index.html#product-list">Nos oursons</a>
+                            <a class="nav-link" href="/index.html#product-list">Nos oursons</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../index.html#quality-guarantee">Gage de qualité</a>
+                            <a class="nav-link" href="/index.html#quality-guarantee">Gage de qualité</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../index.html#contact">Contact</a>
+                            <a class="nav-link" href="/index.html#contact">Contact</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="./shopping_cart.html">
+                            <a class="nav-link" href="/pages/shopping_cart.html">
                                 <span class="material-icons">shopping_cart</span> Panier </a>
                         </li>
                     </ul>
@@ -56,9 +56,7 @@
     </header>
     <main id="ordered">
         <div>
-            <h1>Adoption confirmée !</h1>
-            <p>Félicitation ! Vos nouveaux Orinours seront très heureux d'arriver chez vous très bientot.</p>
-            <h2>Adoption numéro :</h2>
+            <div id="order-text"></div>
             <p><strong id="order-id"></strong></p>
             <h2 id="detailed-order" tabindex="0">Détail de votre commande : <span class="material-icons">
                     expand_more
@@ -68,7 +66,7 @@
         </div>
         <div>
             <p>Merci pour votre commande et à très bientot sur Orinoco !</p>
-            <a href="../index.html" class="btn">Retourner à la page d'accueil</a>
+            <a href="/index.html" class="btn">Retourner à la page d'accueil</a>
         </div>
     </main>
     <footer>
@@ -102,9 +100,9 @@
     </footer>
 </body>
 
-<script type="text/javascript" src="../js/change_category.js"></script>
-<script type="text/javascript" src="../js/index.js"></script>
-<script type="text/javascript" src="../js/shopping_cart.js"></script>
-<script type="text/javascript" src="../js/ordered.js"></script>
+<script type="text/javascript" src="/js/change_category.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+<script type="text/javascript" src="/js/shopping_cart.js"></script>
+<script type="text/javascript" src="/js/ordered.js"></script>
 
 </html>
