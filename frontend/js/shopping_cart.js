@@ -11,6 +11,45 @@ function checkEmptyCart() {
     };
 }
 
+//function to calculate total (call onload and on quantity changes)
+function totalPriceCalculate() {
+    let total = 0;
+    JSON.parse(localStorage.getItem('cart')).forEach(elem => {
+        total += serverData.find(element => element._id == elem.id).price * elem.quantity;
+    })
+    document.querySelector('#total').innerHTML = "Total : " + total / 100 + " €"
+}
+
+//on click on - or + or trash change quantity and totals
+function changeQuantity(newQuantity, id, options, domSelector) {
+
+    let cart = JSON.parse(localStorage.getItem('cart'))
+    let cartQuantity;
+    let cartIndex;
+    cart.forEach(element => {
+        if (element.id === id && JSON.stringify(options) === JSON.stringify(element.options)) {
+            cartIndex = cart.indexOf(element);
+            cartQuantity = element.quantity;
+        }
+    })
+    if (cartQuantity + newQuantity == 0 || newQuantity == 0) {
+        cart = cart.splice(cartIndex + 1, 1);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        document.getElementById(domSelector).remove();
+    } else {
+        cart[cartIndex].quantity += newQuantity;
+        localStorage.setItem('cart', JSON.stringify(cart));
+        let card = document.getElementById(domSelector);
+        card.querySelector('.product-quantity > span:nth-child(2)').innerHTML = cart[cartIndex].quantity;
+        card.querySelector('.product-price').innerHTML = cart[cartIndex].quantity * serverData.find(element => element._id == id).price / 100 + " €";
+
+    }
+    checkEmptyCart()
+    if (checkEmptyCart() != true) { totalPriceCalculate(); };
+
+}
+
+
 //foreach product in the localStorage, build a card
 function appendProductCardCart(database, options, quantity) {
     let productCardCart = document.createElement('article');
@@ -60,14 +99,6 @@ function appendProductCardCart(database, options, quantity) {
 
 }
 
-//function to calculate total (call onload and on quantity changes)
-function totalPriceCalculate() {
-    let total = 0;
-    JSON.parse(localStorage.getItem('cart')).forEach(elem => {
-        total += serverData.find(element => element._id == elem.id).price * elem.quantity;
-    })
-    document.querySelector('#total').innerHTML = "Total : " + total / 100 + " €"
-}
 
 //sendOrder with formated data
 function sendOrder() {
@@ -141,31 +172,3 @@ fetch(`http://localhost:3000/api/${configData.category}/`)
         fillHtml('shopping_cartPage');
     });
 
-//on click on - or + or trash change quantity and totals
-function changeQuantity(newQuantity, id, options, domSelector) {
-
-    let cart = JSON.parse(localStorage.getItem('cart'))
-    let cartQuantity;
-    let cartIndex;
-    cart.forEach(element => {
-        if (element.id === id && JSON.stringify(options) === JSON.stringify(element.options)) {
-            cartIndex = cart.indexOf(element);
-            cartQuantity = element.quantity;
-        }
-    })
-    if (cartQuantity + newQuantity == 0 || newQuantity == 0) {
-        cart = cart.splice(cartIndex + 1, 1);
-        localStorage.setItem('cart', JSON.stringify(cart));
-        document.getElementById(domSelector).remove();
-    } else {
-        cart[cartIndex].quantity += newQuantity;
-        localStorage.setItem('cart', JSON.stringify(cart));
-        let card = document.getElementById(domSelector);
-        card.querySelector('.product-quantity > span:nth-child(2)').innerHTML = cart[cartIndex].quantity;
-        card.querySelector('.product-price').innerHTML = cart[cartIndex].quantity * serverData.find(element => element._id == id).price / 100 + " €";
-
-    }
-    checkEmptyCart()
-    if (checkEmptyCart() != true) { totalPriceCalculate(); };
-
-}
