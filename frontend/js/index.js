@@ -23,9 +23,6 @@ function createCardProduct(product) {
 }
 
 
-
-/*  fetch('../config.json').then(configJson => configJson.json()).then(dataConfigJson => console.log(dataConfigJson));*/
-
 //get data from server
 fetch(`http://localhost:3000/api/${configData.category}/`)
     .then(dataListProducts => dataListProducts.json())
