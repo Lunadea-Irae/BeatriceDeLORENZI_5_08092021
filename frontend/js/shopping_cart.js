@@ -6,7 +6,7 @@ function checkEmptyCart() {
 
         document.querySelector('main').innerHTML = `<section><h1>Votre panier est vide</h1>
                                                 <p id="empty-cart">Pour ajouter des Orinours à votre panier, allez leur rendre visite et clickez sur le bouton "Je veux l'adopter"</p>
-                                                <a class="btn" href="/index.html#product-list">Retourner à la liste</a></section>`;
+                                                <a class="btn" href="../index.html#product-list">Retourner à la liste</a></section>`;
         return true;
     };
 }
