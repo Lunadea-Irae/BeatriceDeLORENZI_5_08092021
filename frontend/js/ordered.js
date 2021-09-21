@@ -5,4 +5,4 @@ document.querySelector('#total').innerHTML = decodeURI(order[1]);
 setTimeout(() => {
     fillHtml('orderedPage');
     localStorage.clear()
-}, 20);
+}, 200);
