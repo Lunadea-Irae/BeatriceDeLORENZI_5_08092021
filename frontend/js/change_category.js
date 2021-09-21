@@ -141,11 +141,15 @@ let configData =
 function fillHtml(page) {
     if (page === 'index') {
         document.querySelector('.navbar-brand').src = '.' + configData.categories[configData.category].header['.navbar-brand'].src;
+        document.querySelector("[href='./index.html#product-list']").innerHTML = configData.categories[configData.category].header[".product-listName"];
     }
-    else { document.querySelector('.navbar-brand').src = '..' + configData.categories[configData.category].header['.navbar-brand'].src; };
+    else {
+        document.querySelector('.navbar-brand').src = '..' + configData.categories[configData.category].header['.navbar-brand'].src;
+        document.querySelector("[href='../index.html#product-list']").innerHTML = configData.categories[configData.category].header[".product-listName"];
+    };
 
     document.querySelector('.navbar-brand').alt = configData.categories[configData.category].header['.navbar-brand'].alt;
-    document.querySelector("[href='/index.html#product-list']").innerHTML = configData.categories[configData.category].header[".product-listName"];
+
     for (const [key, value] of Object.entries(configData.categories[configData.category][page])) {
         if (key === 'head') {
             document.title += value.title;
