@@ -1,7 +1,7 @@
 let configData =
 {
     //..........CHANGE CATEGORY HERE (avalable teddies and cameras for now)
-    'category': 'cameras',
+    'category': 'teddies',
     //.....................................................................
 
 
@@ -139,7 +139,11 @@ let configData =
 }
 
 function fillHtml(page) {
-    document.querySelector('.navbar-brand').src = configData.categories[configData.category].header['.navbar-brand'].src;
+    if (page === 'index') {
+        document.querySelector('.navbar-brand').src = '.' + configData.categories[configData.category].header['.navbar-brand'].src;
+    }
+    else { document.querySelector('.navbar-brand').src = '..' + configData.categories[configData.category].header['.navbar-brand'].src; };
+
     document.querySelector('.navbar-brand').alt = configData.categories[configData.category].header['.navbar-brand'].alt;
     document.querySelector("[href='/index.html#product-list']").innerHTML = configData.categories[configData.category].header[".product-listName"];
     for (const [key, value] of Object.entries(configData.categories[configData.category][page])) {
