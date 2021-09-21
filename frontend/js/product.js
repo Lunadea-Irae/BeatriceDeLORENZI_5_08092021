@@ -15,8 +15,9 @@ function createField(key, value, productName) {
         newField = `<h1 id="${key}">${value}</h1>`;
     } else if (key === 'price') {
         newField = `<h2 id="${key}">${value}</h2>`;
-    }
-    else {
+    } else if (key === '_id') {
+        newField = `<input type="text" hidden value="${value}">`;
+    } else {
         newField = `<p id="${key}">${value}</p>`;
     }
     document.querySelector('form').innerHTML += newField;

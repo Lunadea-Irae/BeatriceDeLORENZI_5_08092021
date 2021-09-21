@@ -20,40 +20,34 @@ function totalPriceCalculate() {
     document.querySelector('#total').innerHTML = "Total : " + total / 100 + " €"
 }
 
-//on click on - or + or trash change quantity and totals
-function changeQuantity(newQuantity, id, options, domSelector) {
+//on change quantity : change quantity and totals in cart and localStorage
+function changeQuantity(productId, productChoosenOptions, newQuantity) {
 
-    let cart = JSON.parse(localStorage.getItem('cart'))
-    let cartQuantity;
-    let cartIndex;
-    cart.forEach(element => {
-        if (element.id === id && JSON.stringify(options) === JSON.stringify(element.options)) {
-            cartIndex = cart.indexOf(element);
-            cartQuantity = element.quantity;
-        }
-    })
-    if (cartQuantity + newQuantity == 0 || newQuantity == 0) {
-        cart = cart.splice(cartIndex + 1, 1);
-        localStorage.setItem('cart', JSON.stringify(cart));
-        document.getElementById(domSelector).remove();
-    } else {
-        cart[cartIndex].quantity += newQuantity;
-        localStorage.setItem('cart', JSON.stringify(cart));
-        let card = document.getElementById(domSelector);
-        card.querySelector('.product-quantity > span:nth-child(2)').innerHTML = cart[cartIndex].quantity;
-        card.querySelector('.product-price').innerHTML = cart[cartIndex].quantity * serverData.find(element => element._id == id).price / 100 + " €";
-
-    }
-    checkEmptyCart()
-    if (checkEmptyCart() != true) { totalPriceCalculate(); };
-
+    const regex = new RegExp(`"id":"${productId}","options":${JSON.stringify(productChoosenOptions)},"quantity":[0-9]+`);
+    let newCart = localStorage.getItem('cart').replace(regex, `"id":"${productId}","options":${JSON.stringify(productChoosenOptions)},"quantity":${newQuantity}`);
+    localStorage.setItem('cart', newCart);
+    totalPriceCalculate();
 }
 
+//on delete, delete product in html and localstorage
+function deleteProduct(productId, productChoosenOptions, domSelector) {
+    let newCart = JSON.parse(localStorage.getItem('cart'));
+    let indexInCart;
+    newCart.forEach(productInCart => {
+        if (productInCart.id === productId && JSON.stringify(productInCart.options) === JSON.stringify(productChoosenOptions)) {
+            indexInCart = newCart.indexOf(productInCart);
+        }
+    });
+    newCart.splice(indexInCart, 1);
+    localStorage.setItem('cart', JSON.stringify(newCart));
+    document.getElementById(domSelector).remove();
+    if (checkEmptyCart() != true) { totalPriceCalculate(); }
+}
 
 //foreach product in the localStorage, build a card
-function appendProductCardCart(database, options, quantity) {
+function appendProductCardCart(apiSData, options, quantity) {
     let productCardCart = document.createElement('article');
-    let domSelector = database._id;
+    let domSelector = apiSData._id;
     let optionHTML = '';
     for (const [key, value] of Object.entries(options)) {
         optionHTML += `<p><span>${key} : </span>${value}</p>`
@@ -61,42 +55,40 @@ function appendProductCardCart(database, options, quantity) {
     };
     productCardCart.setAttribute('id', domSelector);
     productCardCart.innerHTML = `
-                                    <img src="${database.imageUrl}" alt="photo de l'orinours ${database.name}">
+                                    <img src="${apiSData.imageUrl}" alt="photo de l'orinours ${apiSData.name}">
                                     <div class="cart-card-body">
-                                        <h3>${database.name}</h3>
+                                        <h3>${apiSData.name}</h3>
                                         <div class="product-options">${optionHTML}</div>
-                                        <p class="product-description">${database.description}</p>
-                                        <span class="product-price">${quantity * database.price / 100} €</span>    
+                                        <p class="product-description">${apiSData.description}</p>
+                                        <span class="product-price">${quantity * apiSData.price / 100} €</span>    
                                     </div>
-                                    <p class="product-quantity">
-                                        <span class="material-icons change-quantity less">remove_circle_outline</span>
-                                        <span>${quantity}</span>
-                                        <span class="material-icons change-quantity more">add_circle_outline</span>
-                                    </p>
-                                    <span class="material-icons change-quantity delete">
+                                    <select name="quantity" class="product-quantity form-control" aria-label= “quantité”>
+                                        <option value=1>1</option>
+                                        <option value=2>2</option>
+                                        <option value=3>3</option>
+                                        <option value=4>4</option>
+                                        <option value=5>5</option>
+                                        <option value=6>6</option>
+                                        <option value=7>7</option>
+                                        <option value=8>8</option>
+                                        <option value=9>9</option>
+                                        <option value=10>10</option>
+                                    </select>
+                                    <button class="material-icons delete">
                                     delete_forever
-                                    </span>`;
-
+                                    </button>`;
+    productCardCart.querySelector('.product-quantity').value = quantity;
     document.querySelector('#product-table').appendChild(productCardCart);
 
-    //add a listener to add or remove this product
-    productCardCart.querySelectorAll('.change-quantity')
-        .forEach(element => {
-            element.addEventListener('click', function (event) {
-                switch (element.classList[2]) {
-                    case 'less':
-                        changeQuantity(-1, database._id, options, domSelector);
-                        break;
-                    case 'more':
-                        changeQuantity(1, database._id, options, domSelector);
-                        break;
-                    case 'delete':
-                        changeQuantity(0, database._id, options, domSelector);
-                        break;
-                }
-            })
-        });
-
+    //on change quantity
+    productCardCart.querySelector('.product-quantity').addEventListener('change', () => {
+        changeQuantity(apiSData._id, options, productCardCart.querySelector('.product-quantity').value);
+        productCardCart.querySelector('.product-price').innerHTML = productCardCart.querySelector('.product-quantity').value * apiSData.price / 100 + " €";
+    });
+    //on delete
+    productCardCart.querySelector('.delete').addEventListener('click', () => {
+        deleteProduct(apiSData._id, options, domSelector);
+    });
 }
 
 

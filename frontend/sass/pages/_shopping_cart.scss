@@ -45,19 +45,14 @@
             }
             .product-quantity {
                 font-size: large;
-                text-align: center;
                 align-self: center;
-                margin-bottom: 0;
-                display: flex;
-                flex-flow: column;
-                .less {
-                    order: 2;
-                }
-                .more {
-                    order: -1;
-                }
+                text-align: center;
+                padding: 2px;
+                width: 50px;
             }
             .delete {
+                background-color: transparent;
+                border: none;
                 font-size: xx-large;
                 margin-left: 5px;
                 padding-left: 5px;
