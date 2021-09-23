@@ -1,14 +1,10 @@
 //same code than in shopping-cart and :
 #ordered {
     padding-top: 20px;
+    margin: 0 15px;
     .product-quantity {
         padding: 20px;
-        &::before {
-            content: "Quantité";
-        }
     }
-    .less,
-    .more,
     .delete {
         display: none;
     }
@@ -20,6 +16,9 @@
     }
     #product-table {
         display: none;
+        .product-quantity:disabled {
+            background-color: transparent;
+        }
     }
     #detailed-order {
         @include device(1) {

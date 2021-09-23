@@ -9,9 +9,9 @@ function createField(key, value, productName) {
         value.forEach(option =>
             options += `<option value="${option}">${option}</option>`);
         document.querySelector('#options').innerHTML += `<span><label class="form-label" for="${key}">${key} : </label><select class="form-control" id="${key}"> ${options} </select></span>`;
-    } else if (key == 'imageUrl') {
+    } else if (key === 'imageUrl') {
         newField = `<img src="${value}" alt="Photo de ${productName}">`;
-    } else if (key == 'name') {
+    } else if (key === 'name') {
         newField = `<h1 id="${key}">${value}</h1>`;
     } else if (key === 'price') {
         newField = `<h2 id="${key}">${value}</h2>`;

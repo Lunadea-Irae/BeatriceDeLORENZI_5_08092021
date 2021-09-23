@@ -163,4 +163,3 @@ fetch(`http://localhost:3000/api/${configData.category}/`)
         }
         fillHtml('shopping_cartPage');
     });
-

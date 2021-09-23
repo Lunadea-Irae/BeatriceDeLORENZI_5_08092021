@@ -35,4 +35,6 @@ fetch(`http://localhost:3000/api/${configData.category}/`)
             }
             fillHtml('index');
         }
+    }).catch(function (err) {
+        console.error(err);
     });

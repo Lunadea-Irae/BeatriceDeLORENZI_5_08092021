@@ -516,15 +516,11 @@ footer #powered img {
 
 #ordered {
   padding-top: 20px;
+  margin: 0 15px;
 }
 #ordered .product-quantity {
   padding: 20px;
 }
-#ordered .product-quantity::before {
-  content: "Quantité";
-}
-#ordered .less,
-#ordered .more,
 #ordered .delete {
   display: none;
 }
@@ -538,6 +534,9 @@ footer #powered img {
 }
 #ordered #product-table {
   display: none;
+}
+#ordered #product-table .product-quantity:disabled {
+  background-color: transparent;
 }
 @media screen and (min-width: 425px) {
   #ordered #detailed-order {
