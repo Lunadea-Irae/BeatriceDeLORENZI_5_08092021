@@ -63,7 +63,7 @@ Anticipation of the evolutions of the application:
             * Call fillHtml(‘index’) *<=== Use function fillHtml in change-category.js with the index informations*
 <br><br>
 
-* Product
+* Product (LS = localStorage)
     * product.html
         * head *<=== change with change_category.js (function fillHtml())*
         * header *<=== Same on each page, change with change_category.js (function fillHtml())*
@@ -86,7 +86,7 @@ Anticipation of the evolutions of the application:
             * _id = input text invisible
             * else = p
         * onload  *<=== out of functions*
-        * fetch(category/productID) *<=== GET product informations on backend server thanks to the productID*
+        * fetch(category/productID) *<=== defined route to GET product informations on backend server thanks to the productID*
         * Call function createField *<=== for each parameter in the product fetched*
         * Call fillHtml(‘productPage’) *<=== Use function fillHtml in change-category.js with the productPage informations*
         * Listens for clicks on "add to cart"
@@ -97,15 +97,58 @@ Anticipation of the evolutions of the application:
 
 * Shopping Cart
     * shopping_cart.html
+        * head *<=== change with change_category.js (function fillHtml())*
+        * header *<=== Same on each page, change with change_category.js (function fillHtml())*
+        * main 
+            * section introduction *<=== just a title and a small text*
+            * section cart *<=== with all products in the LS and total price*
+            * section contact *<=== consumer identity, this is validate and sent to the server on order*
+        * footer *<=== Same on each page*
     * change_category.js
         * configData = {...} *<=== An object containing the category and all HTML information based on the category*
         * function fillHtml(page) *<=== fill the html of the parametered page with elements of the configData*
     * shopping_cart.js
+        * function checkEmptyCart() *<=== check if the cart in the lS is empty and display a message*
+        * function totalPriceCalculate() *<=== add each product price x quantity and /100*
+        * function changeQuantity(id, options,quantity) *<=== quantity is a select, then change quantity in the LS*
+            * call totalPriceCalculate
+        * function deleteProduct(id, options, domSelector) *<=== delete a product in the LS*
+            * call checkEmptyCart
+            * call totalPriceCalculate *<=== if cart is not empty*
+        * function appendProductCardCart(apiSData, options, quantity) *<=== add a card with the product data, selected options and quantity*
+            * Add eventListener on change quantity and delete.
+        * function sendOrder()
+            * stringify products and contact
+            * fetch(category/order) *<=== defined route to POST order to server*
+            * then locate to ordered *<=== with orderId and total in parameters*
+       * Onload *<=== out of functions*
+            * fetch(category/)  *<=== defined route to GET array with all the caterory's products and their dataServer*
+            * Call the function checkEmptyCart
+            * If not empty, call appendProductCardCart *<=== for each product in the LS* 
+            * Call the function totalPriceCalculate
+            * add an eventListner to the send order button
+            * Call fillHtml(‘shopping_cartPage’) *<=== Use function fillHtml in change-category.js with the shopping_cartPage informations*
+
 <br><br>
 
 * Thanks for order
     * ordered.html
+        * head *<=== change with change_category.js (function fillHtml())*
+        * header *<=== Same on each page, change with change_category.js (function fillHtml())*
+        * main *<=== include thanks, order Id, total order, table of ordered products, see you soon and return to index button*
+        * footer *<=== Same on each page*
     * change_category.js
         * configData = {...} *<=== An object containing the category and all HTML information based on the category*
         * function fillHtml(page) *<=== fill the html of the parametered page with elements of the configData*
     * ordered.js
+        * display order Id *<=== get it in the document location*
+        * display total price *<=== get it in the document location*
+        * Call fillHtml('orderedPage') *<=== timeout 200ms Use function fillHtml in change-category.js with the shopping_cartPage informations*
+        * desabled quantity selector 
+        * Clear the LS.
+
+
+
+
+
+

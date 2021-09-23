@@ -125,7 +125,7 @@ function sendOrder() {
         })
         //then change url with orderId and total price
         .then(function (dataSent) {
-            document.location.href = "./ordered.html#" + dataSent.orderId + "&" + total.innerHTML;
+            document.location.href = "./ordered.html?orderId=" + dataSent.orderId + "&total=" + total.innerHTML;
         })
         .catch(function (err) {
             console.error(err);
